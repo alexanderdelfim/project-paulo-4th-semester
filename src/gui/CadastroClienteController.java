@@ -2,7 +2,10 @@ package gui;
 
 import gui.util.Constraints;
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
@@ -58,7 +61,7 @@ public class CadastroClienteController implements Initializable {
 
     @FXML
     private TextField txtCidade;
-
+        
     @FXML
     private Button btSalvar;
 
@@ -67,7 +70,8 @@ public class CadastroClienteController implements Initializable {
 
     @FXML
     public void onBtSalvarAction() {
-        System.out.println("Salvar");
+        entity = getFormData();
+        service.saveOrUpdate(entity);
     }
 
     @FXML
@@ -126,15 +130,40 @@ public class CadastroClienteController implements Initializable {
         txtNome.setText(entity.getNome());
         txtEmail.setText(entity.getEmail());
         txtCpf.setText(entity.getCpf());
-        txtRg.setText(entity.getRg());
-        /*datePickDataNascimento.set(entity.getDataNascimento());
-        cbSexo.setId(entity.getSexo());*/
+        txtRg.setText(entity.getRg());        
+   //   datePickDataNascimento.setValue();
+        cbSexo.setValue(entity.getSexo());
         txtNome.setText(entity.getTelefone());
         txtNome.setText(entity.getCelular());
         txtNome.setText(entity.getEndereco());
         txtNome.setText(entity.getCep());
         txtNome.setText(entity.getBairro());
         txtNome.setText(entity.getCidade());
+    }
+
+    private Cliente getFormData() {
+        Cliente obj = new Cliente();
+        
+        
+        obj.setNome(txtNome.getText());
+        obj.setEmail(txtEmail.getText());
+        obj.setCpf(txtNome.getText());
+        obj.setRg(txtNome.getText());
+        
+        LocalDate dataPk = datePickDataNascimento.getValue();
+        Calendar dataC = Calendar.getInstance();
+        
+        obj.setDataNascimento(Date.valueOf(dataPk));
+        obj.setDataCadastro(dataC.getTime());
+        obj.setSexo(cbSexo.getValue());
+        obj.setTelefone(txtTelefone.getText());
+        obj.setCelular(txtCelular.getText());
+        obj.setEndereco(txtEndereco.getText());
+        obj.setCep(txtCep.getText());
+        obj.setBairro(txtBairro.getText());
+        obj.setCidade(txtCidade.getText());
+        
+        return obj;
     }
 
 }

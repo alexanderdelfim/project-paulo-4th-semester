@@ -136,6 +136,7 @@ public class ClienteListController implements Initializable {
             
             CadastroClienteController controller = loader.getController();
             controller.setCliente(obj);
+            controller.setClienteService(new ClienteService());
             controller.updateFormData();
 
             Stage dialogStage = new Stage();

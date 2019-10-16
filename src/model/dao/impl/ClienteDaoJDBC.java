@@ -30,7 +30,7 @@ public class ClienteDaoJDBC implements ClienteDao {
         PreparedStatement stmt = null;
 
         try {
-            stmt = conn.prepareStatement("INSERT INTO produto (nome, email, cpf, rg, dataNascimento, dataCadastro, sexo, telefone, celular, endereco, cep, bairro, cidade)VALUES(?,?,?)");
+            stmt = conn.prepareStatement("INSERT INTO cliente (nome, email, cpf, rg, dataNascimento, dataCadastro, sexo, telefone, celular, endereco, cep, bairro, cidade)VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             stmt.setString(1, obj.getNome());
             stmt.setString(2, obj.getEmail());
             stmt.setString(3, obj.getCpf());
@@ -51,7 +51,7 @@ public class ClienteDaoJDBC implements ClienteDao {
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {
-            ConnectionFactory.closeConnection(conn, stmt);
+         //   ConnectionFactory.closeConnection(conn, stmt);
 
         }
 
@@ -108,7 +108,7 @@ public class ClienteDaoJDBC implements ClienteDao {
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-            ConnectionFactory.closeConnection(conn, stmt, rs);
+          //  ConnectionFactory.closeConnection(conn, stmt, rs);
         }
 
         return clientes;
