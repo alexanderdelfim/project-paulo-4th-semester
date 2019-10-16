@@ -1,6 +1,7 @@
 package gui;
 
 import application.Main;
+import gui.listeners.DataChangeListener;
 import gui.util.Alerts;
 import gui.util.Utils;
 import java.io.IOException;
@@ -10,6 +11,8 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,7 +32,7 @@ import model.entities.Cliente;
 import model.entities.enums.Sexo;
 import model.services.ClienteService;
 
-public class ClienteListController implements Initializable {
+public class ClienteListController implements Initializable, DataChangeListener {
 
     private ClienteService services;
 
@@ -137,6 +140,7 @@ public class ClienteListController implements Initializable {
             CadastroClienteController controller = loader.getController();
             controller.setCliente(obj);
             controller.setClienteService(new ClienteService());
+            controller.subcribeDataChandeListener(this);
             controller.updateFormData();
 
             Stage dialogStage = new Stage();
@@ -149,6 +153,17 @@ public class ClienteListController implements Initializable {
             
         } catch (IOException e) {
             Alerts.showAlert("IOExceotion", "Erro ao carregar a tela", e.getMessage(), Alert.AlertType.ERROR);
+        }
+    }
+
+    @Override
+    public void onDataChanged() {
+        try {
+            updateTableView();
+        } catch (ParseException ex) {
+            Logger.getLogger(ClienteListController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteListController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -1,7 +1,7 @@
 package model.dao.impl;
 
 import com.mysql.jdbc.Connection;
-import db.ConnectionFactory;
+
 import java.sql.Date;
 
 import model.entities.Cliente;
@@ -51,7 +51,7 @@ public class ClienteDaoJDBC implements ClienteDao {
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {
-         //   ConnectionFactory.closeConnection(conn, stmt);
+
 
         }
 
@@ -59,7 +59,34 @@ public class ClienteDaoJDBC implements ClienteDao {
 
     @Override
     public void update(Cliente obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     /*   
+        PreparedStatement stmt = null;
+        
+        try {
+            stmt = conn.prepareStatement("INSERT INTO cliente (nome, email, cpf, rg, dataNascimento, dataCadastro, sexo, telefone, celular, endereco, cep, bairro, cidade)VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            stmt.setString(1, obj.getNome());
+            stmt.setString(2, obj.getEmail());
+            stmt.setString(3, obj.getCpf());
+            stmt.setString(4, obj.getRg());
+            stmt.setDate(5, new Date(obj.getDataNascimento().getTime()));
+            stmt.setDate(6, new Date(java.util.Calendar.getInstance().getTimeInMillis()));
+            stmt.setString(7, obj.getSexo().name());
+            stmt.setString(8, obj.getTelefone());
+            stmt.setString(9, obj.getCelular());
+            stmt.setString(10, obj.getEndereco());
+            stmt.setString(11, obj.getCep());
+            stmt.setString(12, obj.getBairro());
+            stmt.setString(13, obj.getCidade());
+
+            stmt.executeUpdate();
+            System.out.println("Cadastrado com sucesso!");
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+
+
+        }*/
     }
 
     @Override
@@ -108,7 +135,7 @@ public class ClienteDaoJDBC implements ClienteDao {
         } catch (SQLException ex) {
             Logger.getLogger(ClienteDaoJDBC.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
-          //  ConnectionFactory.closeConnection(conn, stmt, rs);
+
         }
 
         return clientes;
