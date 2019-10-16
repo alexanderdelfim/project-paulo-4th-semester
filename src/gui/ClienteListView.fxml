@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ClienteListController">
+   <children>
+      <TableView fx:id="tableViewCliente" prefHeight="371.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="tableColumnId" prefWidth="63.0" text="Id" />
+          <TableColumn fx:id="tableColumnNome" prefWidth="95.0" text="Nome" />
+            <TableColumn fx:id="tableColumnEmail" prefWidth="75.0" text="Email" />
+            <TableColumn fx:id="tableColumnCpf" prefWidth="67.0" text="CPF" />
+            <TableColumn fx:id="tableColumnRg" prefWidth="75.0" text="RG" />
+            <TableColumn fx:id="tableColumnDataNascimento" prefWidth="75.0" text="Data de nascimento" />
+            <TableColumn fx:id="tableColumnDataCadastro" prefWidth="75.0" text="Data de cadastro" />
+            <TableColumn fx:id="tableColumnSexo" prefWidth="75.0" text="Sexo" />
+            <TableColumn fx:id="tableColumnTelefone" prefWidth="75.0" text="Telefone" />
+            <TableColumn fx:id="tableColumnCelular" prefWidth="75.0" text="Celular" />
+            <TableColumn fx:id="tableColumnEndereco" prefWidth="75.0" text="Endereço" />
+            <TableColumn fx:id="tableColumnCep" prefWidth="75.0" text="Cep" />
+            <TableColumn fx:id="tableColumnBairro" prefWidth="75.0" text="Bairro" />
+            <TableColumn fx:id="tableColumnCidade" prefWidth="75.0" text="Cidade" />
+        </columns>
+      </TableView>
+      <ToolBar prefHeight="21.0" prefWidth="600.0">
+        <items>
+          <Button fx:id="btNovoCliente" mnemonicParsing="false" onAction="#onBtNovoClienteAction" prefHeight="25.0" prefWidth="105.0" text="Novo Cliente" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="105.0" text="Editar Cliente" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Remover Cliente" />
+        </items>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </ToolBar>
+   </children>
+</VBox>
