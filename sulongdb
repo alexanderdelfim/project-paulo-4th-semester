@@ -1,0 +1,71 @@
+CREATE DATABASE IF NOT EXISTS sulongdb;
+
+USE sulongdb;
+
+CREATE TABLE IF NOT EXISTS fornecedor(
+    id_fornecedor int(11) NOT NULL AUTO_INCREMENT,
+    nome_razao_social varchar(50) NOT NULL,
+    nome_fantasia varchar(50) NOT NULL,
+    email varchar(50),
+    data_cadastro DATE NOT NULL,
+    nome_contato varchar(50) NOT NULL,
+    telefone varchar(14) NOT NULL,
+    endereco varchar(60) NOT NULL,
+    cep int (8) NOT NULL,
+    bairro varchar(50) NOT NULL,
+    cidade varchar(50) NOT NULL,
+    estado varchar(50) NOT NULL PRIMARY KEY (id_fornecedor),
+    PRIMARY KEY (id_fornecedor)
+);
+
+CREATE TABLE IF NOT EXISTS cliente(
+    id_cliente int(11) NOT NULL AUTO_INCREMENT,
+    nome varchar(50) NOT NULL,
+    email varchar(50) NOT NULL,
+    cpf varchar(14) NOT NULL,
+    rg varchar(12) NOT NULL,
+    data_nacimento DATE NOT NULL,
+    data_cadastro DATE NOT NULL,
+    sexo varchar(1) NOT NULL,
+    telefone varchar(14) NOT NULL,
+    celular varchar(15) NOT NULL,
+    endereco varchar(60) NOT NULL,
+    cep int (8) NOT NULL,
+    bairro varchar(50) NOT NULL,
+    cidade varchar(50) NOT NULL,
+    PRIMARY KEY (id_cliente)
+);
+
+CREATE TABLE IF NOT EXISTS produto(
+    id_produto int(11) NOT NULL AUTO_INCREMENT,
+    codigo_produto varchar(20) NOT NULL,
+    nome_produto varchar(100) NOT NULL,
+    descricao_produto varchar(255),
+    preco_fornecedor DOUBLE NOT NULL,
+    preco_venda DOUBLE NOT NULL,
+    id_fornecedor int(11) NOT NULL,
+    CONSTRAINT fk_fornecedor_produto FOREIGN KEY (id_fornecedor) REFERENCES fornecedor (id_fornecedor),
+    PRIMARY KEY (id_produto)
+);
+
+CREATE TABLE IF NOT EXISTS funcionario(
+    id_fucionario int(11) NOT NULL AUTO_INCREMENT,
+    usuario varchar(30) NOT NULL,
+    senha varchar(12) NOT NULL,
+    nivel_acesso varchar(18) NOT NULL,
+    nome varchar(50) NOT NULL,
+    email varchar(50) NOT NULL,
+    cpf varchar(14) NOT NULL,
+    rg varchar(12) NOT NULL,
+    cargo varchar(50) NOT NULL,
+    data_nacimento DATE NOT NULL,
+    data_cadastro DATE NOT NULL,
+    sexo varchar(1) NOT NULL,
+    telefone varchar(14) NOT NULL,
+    celular varchar(15) NOT NULL,
+    endereco varchar(60) NOT NULL,
+    cep int (8) NOT NULL,
+    bairro varchar(50) NOT NULL,
+    cidade varchar(50) NOT NULL,
+    PRIMARY KEY (id_fucionario)
+);
